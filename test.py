@@ -10,5 +10,3 @@ common_git.update('KMS-'+timek)
 # common_git.force_upload()
 
 # common_git.look_log()
-# common_git.look_log()
-# common_git.look_log()
