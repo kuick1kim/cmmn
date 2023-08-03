@@ -4,7 +4,7 @@
 
 import common_git
 
-
+common_git.update('change1')
 
 # os.system('git config --list')
 # os.system('git add README.md')
@@ -21,10 +21,7 @@ import common_git
 # error: remote origin already exists.  
 # os.system('git remote remove origin')
 
-# 문제2
-# 햐
-
-# 
+# 문제2 
 # error: failed to push some refs to 'https://github.com/kuick1kim/common_git.git'
 
 
