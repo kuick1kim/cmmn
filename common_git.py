@@ -13,6 +13,11 @@ def look_log():
 def del_commit():
     os.system('git reset --hard HEAD~1')
 
+# 강제진행
+def force_upload():
+    os.system('git push -u origin +master')
+
+
 
 
 
