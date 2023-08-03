@@ -1,8 +1,10 @@
 
 
-
+import os, time
 
 import common_git
 
-common_git.update('change1')
+timek = time.strftime('%Y-%m-%d %H:%M:%S')
+common_git.update('KMS-'+timek)
+
 

@@ -1,9 +1,13 @@
-import os
+import os, time
 
 def update(text):
     os.system('git add .')
     os.system(f'git commit -m "{text}"')    
     os.system('git push origin master')
+
+
+# 날짜와 분을 가져오기
+# print("문자열 변환 : ", time.strftime('%Y-%m-%d %H:%M:%S'))
 
 
 
