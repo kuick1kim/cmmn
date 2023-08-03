@@ -1,9 +1,19 @@
 import os, time
 
+## 깃허브 끝낼때 'ESC' ':' 'q'
+
 def update(text):
     os.system('git add .')
     os.system(f'git commit -m "{text}"')    
     os.system('git push origin master')
+
+def look_log():
+    os.system('git log')
+
+def del_commit():
+    os.system('git reset --hard HEAD~1')
+
+
 
 
 # 날짜와 분을 가져오기
