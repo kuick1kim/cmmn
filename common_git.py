@@ -1,7 +1,7 @@
 import os, time
 
 ## 깃허브 끝낼때 'ESC' ':' 'q'
-
+timek = time.strftime('%Y-%m-%d %H:%M:%S')
 ### requirements 만들기
 def pip_freeze():
     os.system('pip freeze > requirements.txt')
@@ -26,11 +26,32 @@ def first_init(git_url):
     os.system(f'git remote add origin {git_url}')
     os.system('git push -u origin main') 
  
+# 초기화 하는 방법
+### 이것으로 자름
+# git remote rm origin
+### 이것으로 다시확인
+# git remote -v
+### 이것으로 README.md 파일 생성
+# echo "# cmmn" >> README.md
+### 이것으로 git 파일 애드
+# git add README.md
+### 이것으로 git 첫번째 커밋
+# git commit -m "first commit"
+
+#깃 브랜치 이름을 main으로 함
+# git branch -M main
+
+# 여기에 이동할 주소를 적어줌
+# git remote add origin https://github.com/kuick1kim/cmmn.git
+
+# 여기서 깃 푸쉬함 
+# git push -u origin main
+
+# common_git.first_init('https://github.com/kuick1kim/cmmn.git')
 
 
 
 def update(text):
-    timek = time.strftime('%Y-%m-%d %H:%M:%S')
     os.system('git add .')
     os.system(f'git commit -m "{text}-{timek}"')    
     os.system('git push origin main')
@@ -78,6 +99,16 @@ def merge_branch():
     os.system(f'git commit -m "{get_branch}브랜치가 합쳐짐"')   
 
 
+
+
+
+ 
+### 이것이 안됨
+# git init
+### 이것으로 확인해봄
+# git remote -v
+# origin  https://github.com/kuick1kim/common_git.git (fetch)
+# origin  https://github.com/kuick1kim/common_git.git (push) 
 
 
 
