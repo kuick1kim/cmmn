@@ -2,6 +2,21 @@ import os, time
 
 ## 깃허브 끝낼때 'ESC' ':' 'q'
 
+### requirements 만들기
+def pip_freeze():
+    os.system('pip freeze > requirements.txt')
+
+### requirements 설치
+def pip_install():
+    os.system('pip install -r requirements.txt')
+
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+
+
 def update(text):
     os.system('git add .')
     os.system(f'git commit -m "{text}"')    
@@ -10,14 +25,15 @@ def update(text):
 def look_log():
     os.system('git log --oneline --all --graph')
 
+# 강제진행
+def force_upload():
+    os.system('git push -u origin +master')
+
+
 ### 마지막 커밋한것 지워줌
 def del_commit():
     os.system('git reset --hard HEAD~1')
     # os.system('git reset --hard HEAD~2') 이것은 두개를 지워주는 것
-
-# 강제진행
-def force_upload():
-    os.system('git push -u origin +master')
 
 
 
@@ -55,23 +71,27 @@ def merge_branch():
 
 
 # 날짜와 분을 가져오기
+
 # print("문자열 변환 : ", time.strftime('%Y-%m-%d %H:%M:%S'))
-
-
 
 
 # 오리진이 문제가 있을때 지우기
 # error: remote origin already exists.  
 # os.system('git remote remove origin')
 
-
 # 문제2 
 # error: failed to push some refs to 'https://github.com/kuick1kim/common_git.git'
-
 
 # 문제3
 # fatal: a branch named 'master' already exists
 # 삭제해줘야 한다. 
 # fatal: a branch named 'master' already exists
 # git branch -d master    
+
+# 문제4
+# rebase 도중에 문제가 발생 
+#  git rebase --quit
+
+
+
 
