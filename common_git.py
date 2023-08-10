@@ -15,6 +15,18 @@ def pip_install():
 ##################################################
 ##################################################
 ##################################################
+def first_init(git_url):
+    ### 사용법 common_git.first_init('https://github.com/kuick1kim/cmmn.git')
+    os.system('git remote rm origin') ### 기본주소 비우기
+    os.system('echo "# cmmn" >> README1.md')
+    os.system('git init')
+    os.system('git add README1.md')
+    os.system('git commit -m "first commit"')
+    os.system('git branch -M main')
+    os.system(f'git remote add origin {git_url}')
+    os.system('git push -u origin main')
+ 
+
 
 
 def update(text):

@@ -32,5 +32,8 @@ common_git.pip_freeze()
 # 여기서 깃 푸쉬함 
 # git push -u origin main
 
+# common_git.first_init('https://github.com/kuick1kim/cmmn.git')
+
+
 common_git.update('kms')
 
