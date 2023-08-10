@@ -2,7 +2,7 @@ import common_git
 
 common_git.pip_freeze()
 
-
+ 
 ### 이것이 안됨
 # git init
 ### 이것으로 확인해봄

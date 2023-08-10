@@ -1,7 +1,7 @@
 
 import cv2
 import numpy as np
-
+ 
 
 def read_video(path):
     cap = cv2.VideoCapture(path)

@@ -4,7 +4,7 @@ import time
 
 
 
-def path_c(file_name):
+def path_c(file_name): 
     path1= "C:/Users/MZ-USER/Desktop/{}".format(file_name)
     return path1
 

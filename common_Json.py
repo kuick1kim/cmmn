@@ -1,7 +1,7 @@
 ##### 여기는폴더에다 넣고 돌리면 모두 합쳐지는 프로그램이다. 
 
 
-
+ 
 
 import pandas as pd
 import os, json

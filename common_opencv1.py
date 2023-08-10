@@ -4,7 +4,7 @@ import time
 import numpy as np
 
 
-
+ 
 
 
 # 아무것도 없는 공 image만들기

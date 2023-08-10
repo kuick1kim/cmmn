@@ -1,7 +1,7 @@
 import pandas as pd
 import common_selenium
 import time
-
+ 
 
 
 def path_c(file_name):

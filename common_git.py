@@ -24,7 +24,7 @@ def first_init(git_url):
     os.system('git commit -m "first commit"')
     os.system('git branch -M main')
     os.system(f'git remote add origin {git_url}')
-    os.system('git push -u origin main')
+    os.system('git push -u origin main') 
  
 
 
