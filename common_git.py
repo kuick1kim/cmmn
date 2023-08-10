@@ -100,6 +100,17 @@ def merge_branch():
 
 
 
+#### 현재 모든 파일 깃 이그노어로 만들기
+def make_gitignore():
+    # 현재 폴더 내의 모든 파일 목록을 가져옵니다.
+    file_list = os.listdir()
+    # .ignore 파일에 추가할 내용을 작성합니다.
+    ignore_content = "\n".join(file_list)
+
+    # .ignore 파일에 내용을 추가합니다.
+    with open(".gitignore", "a") as ignore_file:
+        ignore_file.write(ignore_content)
+    print("모든 파일이 .gitignore 파일에 추가되었습니다.")
 
 
  

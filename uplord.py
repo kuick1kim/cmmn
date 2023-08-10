@@ -11,6 +11,9 @@ import common_git
 # origin  https://github.com/kuick1kim/common_git.git (push) 
 
 
-
+# .gitignore
 common_git.update('kms')
+
+# common_git.make_gitignore()
+
 
