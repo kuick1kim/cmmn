@@ -18,9 +18,10 @@ def pip_install():
 
 
 def update(text):
+    timek = time.strftime('%Y-%m-%d %H:%M:%S')
     os.system('git add .')
-    os.system(f'git commit -m "{text}"')    
-    os.system('git push origin master')
+    os.system(f'git commit -m "{text}-{timek}"')    
+    os.system('git push origin main')
 
 def look_log():
     os.system('git log --oneline --all --graph')
