@@ -1,11 +1,20 @@
 import os, time
-
 import shutil
 
+
 #### exe파일 만들때
+# 
 #1. pip install pyinstaller 로 venv에서 설치합니다
+
 #2. pyinstaller -w -F main.py 로 콘솔창도 안뜨고, 한파일로 만듭니다. 
 
+### 환경설정 해줘야 한다. 
+# 3. pip install PyQt5
+# 3. pip install pyqt5-tools
+# 3. pip install pandas
+# 3. pip install BeautifulSoup4
+# 3. pip install openpyxl
+# 1. pip install pyinstaller
 
 def make_venv(folder_name):
     with open('venv_name.txt', "w") as file:
