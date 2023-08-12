@@ -8,6 +8,9 @@ import shutil
 
 #2. pyinstaller -w -F main.py 로 콘솔창도 안뜨고, 한파일로 만듭니다. 
 
+# QT_PLUGIN_PATH
+# G:\python\20230811 pyqt2pandas\kimkim\Lib\site-packages\PyQt5\Qt5\plugins
+
 ### 환경설정 해줘야 한다. 
 # 3. pip install PyQt5
 # 3. pip install pyqt5-tools
