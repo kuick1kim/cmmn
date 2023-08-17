@@ -2,7 +2,7 @@ import os, time
 import shutil
 
 
-#### exe파일 만들때
+#### exe파일 만들때1
 # 
 #1. pip install pyinstaller 로 venv에서 설치합니다
 
@@ -12,12 +12,12 @@ import shutil
 # G:\python\20230811 pyqt2pandas\kimkim\Lib\site-packages\PyQt5\Qt5\plugins
 
 ### 환경설정 해줘야 한다. 
+# 1. pip install pyinstaller
 # 3. pip install PyQt5
 # 3. pip install pyqt5-tools
 # 3. pip install pandas
 # 3. pip install BeautifulSoup4
 # 3. pip install openpyxl
-# 1. pip install pyinstaller
 
 def make_venv(folder_name):
     with open('venv_name.txt', "w") as file:
@@ -128,6 +128,3 @@ elif number_l == 'd':
   
 else :
     print('1, 2, 3, a를 눌러야 해요 : 안뇽')
-
-
-
