@@ -303,7 +303,7 @@ def kakao_call(): ###### 여기는 카톡 보내는 곳이다.
 def send_slack(mamasg): ###### 인터넷이 안되서 안보내지는 경우도 있었음
     # 웹훅으로 보낸다.   
     # 생성한 웹훅 주소
-    url = 'https://hooks.slack.com/services/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'
+    url = #### 여기를 넣으세요
     title = '[오류발생]\t'*3
     content = '[모바일 오류가 발생했습니다.]  :pepe_rolling: [어서빨리 확인해 주세요]\n\n'*3
     jsonk={ 'text': title, ###### 여기는 알림창에 뜨는 내용입니다. 
@@ -340,8 +340,8 @@ def send_slack(mamasg): ###### 인터넷이 안되서 안보내지는 경우도 
     requests.post( url, headers={'content-type': 'application/json'}, json=jsonk )
     ########################################
     ######################################### 사진 몇장 보내기 
-    SLACK_BOT_TOKEN = "xoxp-2128593738421-3155065533445-4951401050807-3e8ebad039b4ac7d3f9fac51b02ab38f"  # 슬랙 봇의 API token
-    CHANNEL_ID = "D034F97PDNJ"  # 채널 ID
+    SLACK_BOT_TOKEN = #### 여기를 넣으세요  "f9fac51b02ab38f"  # 슬랙 봇의 API token
+    CHANNEL_ID = ##### 여기를 넣으세요 "D034F97PDNJ"  # 채널 ID
     # WebClient 인스턴스 생성
     client = WebClient(token=SLACK_BOT_TOKEN)
 
@@ -400,7 +400,7 @@ def send_email(to_someone, textk): #### 여기서는 자신의 비밀번호가 �
     smtp = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT)
 
     EMAIL_ADDR = 'mzkuick1@mz.co.kr'
-    EMAIL_PASSWORD = 'bqvsddjqkgeeywbr'
+    EMAIL_PASSWORD = ### 여기를 넣으세요'wbr'
 
     # 2. SMTP 서버에 로그인
     smtp.login(EMAIL_ADDR, EMAIL_PASSWORD)
@@ -432,8 +432,8 @@ def send_SMS(phone_number): ####send_SMS("01025713111")
     # Download the helper library from https://www.twilio.com/docs/python/install
     
 
-    account_sid = 'ACbb26528da8be4e3f1e249392b44fe877'
-    auth_token = 'eb0aa0c613b85d8372f39083df49ed97'
+    account_sid = #### 여기를 넣으세요 '392b44fe877'
+    auth_token = #### 여기를 넣으세요'372f39083df49ed97'
     client = Client(account_sid, auth_token)
 
     message = client.messages \
