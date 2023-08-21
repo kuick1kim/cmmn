@@ -6,6 +6,7 @@ import shutil
 # 
 #1. pip install pyinstaller 로 venv에서 설치합니다
 #2. pyinstaller -w -F main.py 로 콘솔창도 안뜨고, 한파일로 만듭니다. 
+# https://convertico.com/#google_vignette    
 #3. pyinstaller.exe --onefile --windowed --icon=app.ico app.py
 
 # QT_PLUGIN_PATH
