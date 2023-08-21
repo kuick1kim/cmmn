@@ -35,3 +35,11 @@ def first_bs4(url, headers):
         print(response.status_code)
 
     return soup
+
+
+
+#####################################################
+# 셀레니움으로 접근해서 파싱하기 
+# html = driver.page_source
+# soup = BeautifulSoup(html, 'html.parser')
+# notices = soup.select('div.p_inr > div.p_info > a > span')
