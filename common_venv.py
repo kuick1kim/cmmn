@@ -5,8 +5,8 @@ import shutil
 #### exe파일 만들때1
 # 
 #1. pip install pyinstaller 로 venv에서 설치합니다
-
 #2. pyinstaller -w -F main.py 로 콘솔창도 안뜨고, 한파일로 만듭니다. 
+#3. pyinstaller.exe --onefile --windowed --icon=app.ico app.py
 
 # QT_PLUGIN_PATH
 # G:\python\20230811 pyqt2pandas\kimkim\Lib\site-packages\PyQt5\Qt5\plugins
