@@ -6,19 +6,21 @@ import shutil
 # python.exe -m pip install --upgrade pip
 # pip freeze > requirements.txt
 # pip install -r .\requirements.txt
-
+# pip install --upgrade pyinstaller # 업그레이드 해야 할 수 있음
 
 #1. pip install pyinstaller 로 venv에서 설치합니다
 #2. pyinstaller -w -F --icon=app.ico main.py 로 콘솔창도 안뜨고, 한파일로 만듭니다. 
 # 백그라운드제거 https://www.remove.bg/ko/upload
 # png를 아이콘으로 https://convertico.com/#google_vignette    
-#3. pyinstaller.exe --onefile --windowed --icon=app.ico app.py
+#3. pyinstaller.exe --onefile --windowed --icon=app.ico .\bible.py 
 
 # QT_PLUGIN_PATH
 # G:\python\20230811 pyqt2pandas\kimkim\Lib\site-packages\PyQt5\Qt5\plugins
 
 ### 환경설정 해줘야 한다. 
 # 1. pip install pyinstaller
+# 2. 위에것이 바이러스로 인해 자꾸 삭제된다
+# --- pip install https://github.com/pyinstaller/pyinstaller/archive/develop.tar.gz
 # 3. pip install PyQt5
 # 3. pip install pyqt5-tools
 # 3. pip install pandas
