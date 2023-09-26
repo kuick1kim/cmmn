@@ -570,4 +570,36 @@ def save_json(json_k, path):
 
 
 
+##########################################################
+##########################################################
+##########################################################
+##########################################################
+##########################################################
+##########################################################
+##########################################################
+
+# 텍스트 찾아내기 방법 1
+# 한개의 요소를 찾아낼때
+
+def pick_one_text(driver, x_path):
+    text = driver.find_element(By.XPATH, x_path).text
+    print(text)
+    return text
+
+
+#### 사용 예
+#### list_k=common_selenium.pick_texts_list(driver, '//*[@class="product_list"]/*/div/div/p/a')
+def pick_texts_list(driver, x_path):
+    list_k = driver.find_elements(By.XPATH, x_path)
+    list_l =[]
+    for i in list_k:
+        k= i.text
+        list_l.append(k)
+        print(i.text)    
+    return list_l
+
+
+
+
+
 
