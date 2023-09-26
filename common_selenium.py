@@ -8,7 +8,6 @@ import pandas as pd
 from bs4 import BeautifulSoup     
 import json, requests , shutil, os
 import urllib.request
- 
 
 import time
 
@@ -19,7 +18,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 import time
-
 
 
 
@@ -54,12 +52,13 @@ def del_folder(folder_name):
 
 def driver1():
     ###################드라이버 세팅###########
-    s= Service("c:/chrome/chromedriver.exe")
+    s= Service("chrome/chromedriver.exe")
     options = webdriver.ChromeOptions()
     # options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument("disable-gpu") 
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('window-size=920,580')    ###### 윈도우 사이즈
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     driver = webdriver.Chrome(service=s ,options=options)
@@ -76,11 +75,7 @@ def refresh(driver):
     driver.refresh()
 
 
-#####################################################
-# 셀레니움으로 접근해서 파싱하기 
-# html = driver.page_source
-# soup = BeautifulSoup(html, 'html.parser')
-# notices = soup.select('div.p_inr > div.p_info > a > span')
+
 
 
 def screenshot(driver, save_filename):
@@ -92,7 +87,7 @@ def screenshot(driver, save_filename):
     print(save_filename)
     save_filename = save_filename.replace(":","-").replace('"','').replace('/','_').replace('*','').replace('@','').replace('?','')
     save_filename = save_filename.replace("&","-").replace(".","-")
-    time.sleep(4.5)
+    time.sleep(1)
     make_html(driver, save_filename)
     driver.save_screenshot('image/{}.png'.format(save_filename))
 
@@ -124,8 +119,6 @@ def table_save(driver, save_name,table_num):
 
     df = pd.read_html(soup)[table_num]
     save_csv(df, "image/{}.csv".format(save_name) )
-
-
 
 
 
@@ -200,21 +193,8 @@ def save_csv(df, path):
 
 
 
-def make_memojang_w(path):
-    with open(path, "w", encoding='utf-8') as file:
-        file.write("")
-        file.close()
 
-def make_memojang_add(path,text):
-    with open(path, "a", encoding='utf-8') as file:
-        file.write(text+"\n")
-        file.close()
 
-def make_memojang_add_list(path,text_list_elements):
-    with open(path, "a", encoding='utf-8') as file:
-        for a in text_list_elements:
-            file.write(a.text+"\n")
-        file.close()
 
 
 ############################################################################
@@ -232,7 +212,8 @@ def make_memojang_add_list(path,text_list_elements):
 ############################################################################
 
 
-def elem_1_here(driver,  action_k, element_j): 
+def elem_1_here(driver, action_k, element_j): 
+
     """
     한개의 요소가 확인될때까지 찾는다. 
         driver `Object`: 기본 드라이버를 가져옴
@@ -241,18 +222,21 @@ def elem_1_here(driver,  action_k, element_j):
     Retruns:
         xpath_here `Object`: 엘레멘트를 가지고 다양한 액션을 취할 수 있다. 
     """
-    numb = 0
-    while numb <= 100 :
+    numb = 1
+    while numb <= 20 :
+        time.sleep(1)
         try: 
             if "click_path" in str(action_k) or "[" in str(element_j): #### xpath 기반으로 만든로직
                 #### 여기는 XPATH 기반인 요소를 찾는다. 
                 xpath_here = driver.find_element(By.XPATH, element_j)
+                driver.execute_script("arguments[0].style.border = '4px solid rgba(255, 0, 0, 0.6)';", xpath_here)  
                 xpath_here.is_displayed()                
                 break
 
             elif "click_1" in str(action_k) : #### 김민상이 만든로직으롤 찾음 
                 xpath_here = class_part_logic(element_j) #### 요소를 만들어온다
                 xpath_here = driver.find_element(By.XPATH, xpath_here)
+                driver.execute_script("arguments[0].style.border = '4px solid rgba(255, 0, 0, 0.6)';", xpath_here)  
                 xpath_here.is_displayed()
                 break
 
@@ -262,21 +246,22 @@ def elem_1_here(driver,  action_k, element_j):
                     xpath_here = class_part_logic(element_j) #### 요소를 만들어온다
                 elif "[" in str(element_j):
                     xpath_here = element_j
-                xpath_here = driver.find_element(By.XPATH, xpath_here)[num]
+                xpath_here = driver.find_elements(By.XPATH, xpath_here)[num]
+                driver.execute_script("arguments[0].style.border = '4px solid rgba(255, 0, 0, 0.6)';", xpath_here)  
                 xpath_here.is_displayed()
                 break
 
             elif "_text" in str(action_k): #### 간단하게 링크 텍스트로 요소를 찾고 싶을때
                 xpath_here = driver.find_element(By.LINK_TEXT, element_j)
+                driver.execute_script("arguments[0].style.border = '4px solid rgba(255, 0, 0, 0.6)';", xpath_here)  
                 xpath_here.is_displayed()
                 break
             else:
                 print("확인 좀 해봐라 뭔 action_k 글씨가 안맞나보다")
             
-        except Exception as e:
-            time.sleep(0.1)
-            if numb % 20 == 0:
-                print("============= element '{}'가 찾아지지 않고 있습니다. [{}회] =====".format(element_j, ))
+        except Exception as e:                       
+            if numb % 5 == 0:
+                print("============= element '{}'가 찾아지지 않고 있습니다. [{}회] =====".format(element_j,numb ))
             if numb % 100 == 0:
                 print("============ 100번 찾았는데 더이상은 힘들어서 못찾겠다")
                 break
@@ -296,13 +281,14 @@ def elem_2_here(driver, element_j, action_k ):
         xpath_list `Object`: 리스트 모아진것을 다시 넘겨준다. 
     """
 
-    try:        
-        
-        if "[" in str(action_k):
+    try:                
+        if "[" in str(element_j):            
             xpath_list = driver.find_elements(By.XPATH, element_j)     
-        elif "$" in str(action_k):
+        elif "$" in str(element_j):            
             xpath_here = class_part_logic(element_j) #### 요소를 만들어온다
             xpath_list = driver.find_elements(By.XPATH, xpath_here)
+
+        
 
         else:
             print("xpath가 형식을 확인해 보세요")
@@ -327,7 +313,7 @@ def elem_2_here(driver, element_j, action_k ):
 def class_part_logic(class_part):
     """
     class_part_logic 특정 형식으로 글씨를 입력하면 재가공 하는 함수이다. 
-        class_part (str) : "index$1-text$하하-bounds$1134,153][1233,252]"  $로 스플릿됨 "|"로 스플릿됨 
+        class_part (str) : "index$1-text$하하-bounds$1134,153][1233,252]"  $로 스플릿됨 크게는 "-"로 스플릿됨 
     """
     class_part = class_part.split("-")
     kk ='//*[ '
@@ -390,7 +376,7 @@ def click_N_input(driver, text1, xpath):
 
 
 def click_CW(driver):
-    print("창변경")
+
     try:
         time.sleep(0.4) 
         driver.switch_to.window(driver.window_handles[-1]) ###마지막 창으로 변경해 준다
@@ -531,9 +517,9 @@ def scroll_save(driver,element_j,count):
 
 
 ###############################################################
-########## image save 하는 곳#########################################
-########## image save 하는 곳#########################################
-########## image save 하는 곳#########################################
+########## save 하는 곳#########################################
+########## save 하는 곳#########################################
+########## save 하는 곳#########################################
 ###############################################################
 def save_image_all(name, xpath_list):
     count_j=0
@@ -551,56 +537,11 @@ def save_image_all(name, xpath_list):
         count_j = count_j +1
 
 
-###############################################################
-########## 이미지 한개 추출#####################################
-########## 이미지 한개 추출#####################################
-########## 이미지 한개 추출#####################################
-###############################################################
-
-def get_one_image(driver, file_name, xpath_k):
-    images = driver.find_element(By.XPATH, xpath_k)
-    url = images.get_attribute('src')
-    urllib.request.urlretrieve(url, "{}.jpg".format(file_name))
-
-
-###############################################################
-########## 이미지 여러개 추출###################################
-########## 이미지 여러개 추출###################################
-###############################################################
-
-# 사용법  '/html/body/div[3]/div[2]/div/div[1]/section[2]/div/div[1]/div[1]/div[@data-cr-area="img"]'
-def get_xpath_list(driver, xpath_k):
-    xpath_list = driver.find_elements(By.XPATH, xpath_k) 
-    return xpath_list
-
-
-# xpath_list = driver.find_elements(By.XPATH, '/html/body/div[3]/div[2]/div/div[1]/section[2]/div/div[1]/div[1]/div[@data-cr-area="img"]') 
-# '/html/body/div[3]/div[2]/div/div[1]/section[2]/div/div[1]/div[1]/div[@data-cr-area="img"]'
-# print(len(xpath_list))
-
-
-## xpath 예제 "/html/body/div[3]/div[2]/div/div[1]/section[2]/div/div[1]/div[1]/div[@data-cr-area='img'][{}]/div/div[1]/a/img"
-def get_image_all2(driver, len_xpath, xpath_k):
-    
-    for i in range(1,len_xpath,1):
-        try:
-            images= driver.find_element(By.XPATH, xpath_k.format(i))
-            url = images.get_attribute('src')
-            k = str(i).zfill(3)
-            urllib.request.urlretrieve(url, "img/{}.jpg".format(k))
-
-        except:
-            print(i)
-            pass
 
 
 
 
-###############################################################
-########## 이미지 한개 추출#####################################
-########## 이미지 한개 추출#####################################
-########## 이미지 한개 추출#####################################
-###############################################################
+
 
 
 def input_df(driver, tc_name, count_tc, start_time, df, text):
@@ -620,8 +561,9 @@ def input_screenshot(driver, tc_name, count_tc, start_time, df, text):
     return df, count_tc, start_time
 
 
-
-
+def save_json(json_k, path):
+    with open('{}'.format(path), "w", encoding="utf-8")  as f:
+        json.dump(json_k, f, ensure_ascii=False)
 
 
 
