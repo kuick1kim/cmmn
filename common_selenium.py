@@ -70,6 +70,11 @@ def open_selenium(driver, url):
     driver.get(url)
 
 
+def open_selenium_script(driver, url):
+    driver.execute_script(f'window.location.href = "{url}";')
+
+
+
 def refresh(driver):
     time.sleep(0.3)
     driver.refresh()
@@ -87,7 +92,7 @@ def screenshot(driver, save_filename):
     print(save_filename)
     save_filename = save_filename.replace(":","-").replace('"','').replace('/','_').replace('*','').replace('@','').replace('?','')
     save_filename = save_filename.replace("&","-").replace(".","-")
-    time.sleep(1)
+    # time.sleep(1)
     make_html(driver, save_filename)
     driver.save_screenshot('image/{}.png'.format(save_filename))
 
@@ -262,7 +267,7 @@ def elem_1_here(driver, action_k, element_j):
         except Exception as e:                       
             if numb % 5 == 0:
                 print("============= element '{}'가 찾아지지 않고 있습니다. [{}회] =====".format(element_j,numb ))
-            if numb % 100 == 0:
+            if numb % 20 == 0:
                 print("============ 100번 찾았는데 더이상은 힘들어서 못찾겠다")
                 break
         numb = numb + 1
@@ -306,6 +311,24 @@ def elem_2_here(driver, element_j, action_k ):
 
     ####### 여기가 리스트로 온다. 
     return xpath_list
+
+
+
+##### 여러가지 조건이 있는 곳에서 클릭할때 사용하는 방법 예를 들어 여러개의 라디오 버튼에서 사용
+# number_k = 0
+
+# list_k =[
+#      '//*[@class="c_util_servicelink"]/ul[1]/li[1]/a',
+#      '//*[@class="c_util_servicelink"]/ul[1]/li[2]/a'
+# ]
+
+def choice_one_click(driver, number_k, list_k):
+    ### 여기에는 클릭이 없다 외부에서 클릭해줘라
+    xpath_here = driver.find_element(By.XPATH,  list_k[number_k % len(list_k)])
+    driver.execute_script("arguments[0].style.border = '4px solid rgba(255, 0, 0, 0.6)';", xpath_here)  
+    return  xpath_here  ### 여기에는 클릭이 없다 외부에서 클릭해줘라
+ 
+
 
 
 
@@ -582,9 +605,10 @@ def save_json(json_k, path):
 # 한개의 요소를 찾아낼때
 
 def pick_one_text(driver, x_path):
-    text = driver.find_element(By.XPATH, x_path).text
-    print(text)
-    return text
+    text_k = driver.find_element(By.XPATH, x_path)
+    driver.execute_script("arguments[0].style.border = '4px solid rgba(255, 0, 0, 0.6)';", text_k)  
+    # print(text_k.text)
+    return text_k.text
 
 
 #### 사용 예
@@ -593,13 +617,85 @@ def pick_texts_list(driver, x_path):
     list_k = driver.find_elements(By.XPATH, x_path)
     list_l =[]
     for i in list_k:
+        driver.execute_script("arguments[0].style.border = '4px solid rgba(255, 0, 0, 0.6)';", i)  
         k= i.text
         list_l.append(k)
         print(i.text)    
     return list_l
 
 
+##########################################################
+##########################################################
+##########################################################
+##########################################################
+##########################################################
+##########################################################
+##########################################################
 
 
 
+# 아우터 소스를 찾아내는 방법
 
+def outerHTML_k(driver, elements_k):
+    main1 = driver.find_elements(By.XPATH,  elements_k)
+    for i in main1:
+        print(i.get_attribute('outerHTML'))
+
+
+# xpath 가져오는 방법
+def get_xpath(driver, element_one):
+    element_xpath = driver.execute_script(
+        "function absoluteXPath(element) {" +
+        "  var comp, comps = [];" +
+        "  var parent = null;" +
+        "  var xpath = '';" +
+        "  var getPos = function(element) {" +
+        "    var position = 1, curNode;" +
+        "    if (element.nodeType == Node.ATTRIBUTE_NODE) {" +
+        "      return null;" +
+        "    }" +
+        "    for (curNode = element.previousSibling; curNode; curNode = curNode.previousSibling) {" +
+        "      if (curNode.nodeName == element.nodeName) {" +
+        "        ++position;" +
+        "      }" +
+        "    }" +
+        "    return position;" +
+        "  };" +
+        "  if (element instanceof Document) {" +
+        "    return '/';" +
+        "  }" +
+        "  for (; element && !(element instanceof Document); element = element.nodeType == Node.ATTRIBUTE_NODE ? element.ownerElement : element.parentNode) {" +
+        "    comp = comps[comps.length] = {};" +
+        "    switch (element.nodeType) {" +
+        "      case Node.TEXT_NODE:" +
+        "        comp.name = 'text()';" +
+        "        break;" +
+        "      case Node.ATTRIBUTE_NODE:" +
+        "        comp.name = '@' + element.nodeName;" +
+        "        break;" +
+        "      case Node.PROCESSING_INSTRUCTION_NODE:" +
+        "        comp.name = 'processing-instruction()';" +
+        "        break;" +
+        "      case Node.COMMENT_NODE:" +
+        "        comp.name = 'comment()';" +
+        "        break;" +
+        "      case Node.ELEMENT_NODE:" +
+        "        comp.name = element.nodeName;" +
+        "        break;" +
+        "    }" +
+        "    comp.position = getPos(element);" +
+        "  }" +
+        "  for (var i = comps.length - 1; i >= 0; i--) {" +
+        "    comp = comps[i];" +
+        "    xpath += '/' + comp.name.toLowerCase();" +
+        "    if (comp.position !== null) {" +
+        "      xpath += '[' + comp.position + ']';" +
+        "    }" +
+        "  }" +
+        "  return xpath;" +
+        "}; return absoluteXPath(arguments[0]);", element_one)
+
+    # 선택한 요소의 XPath 출력
+    print("Full XPath\t: ", element_xpath)
+    print("outerHTML\t: ", element_one.get_attribute('outerHTML'))
+    return element_xpath
