@@ -773,3 +773,199 @@ def D05_set_index(df,index_name): #### 여기에 인덱스 네임을 "" 로 아�
 ######################    여기는 INI     ##########################
 ######################    여기는 INI     ##########################
 ##################################################################
+
+
+# # 필터거는 방법
+# filtered_df = df[df['column_name'] > 50]
+
+# filtered_df = df[(df['column1'] > 50) & (df['column2'] == 'value')]
+
+# filtered_df = df[(df['column1'] > 50) | (df['column2'] == 'value')]
+
+
+# def custom_filter(row):
+#     return row['column1'] > 50 and row['column2'] == 'value'
+# filtered_df = df[df.apply(custom_filter, axis=1)]
+
+
+
+# filtered_df = df[df['column'].isin(['value1', 'value2', 'value3'])]
+
+# filtered_df = df[df['column'].str.contains('pattern')]
+
+# filtered_df = df[df['column'].isna()]
+
+# filtered_df = df.loc[2:5]  # 인덱스 2에서 5까지의 행을 선택
+
+# filtered_df = df.select_dtypes(include=['int64', 'float64'])
+
+# filtered_columns = df.columns[df.mean() > 50]
+# filtered_df = df[filtered_columns]
+
+# import re
+# filtered_df = df[df['column'].str.contains(r'pattern', regex=True)]
+# 쿼리사용가능
+# filtered_df = df.query('column1 > 50 and column2 == "value"')
+# 쿼리사용가능
+# min_value = 30
+# filtered_df = df.query('column1 > @min_value')
+
+
+# max_value = df['column'].max()
+# filtered_df = df[df['column'] >= max_value]
+
+# # 중복값제거
+# filtered_df = df.drop_duplicates()
+# filtered_df = df.drop_duplicates(subset=['column'])
+
+# 멀티인덱스 필터
+# filtered_df = df.loc[(slice(None), 'value'), :]
+
+# 행과 열을 동시에 필터
+# filtered_df = df.loc[(df['column1'] > 50) & (df['column2'] == 'value'), ['column1', 'column2']]
+
+# 특정문자로 시작됨
+# filtered_df = df[df['column'].str.startswith('특정문자열')]
+# 특정문자로 끝남
+# filtered_df = df[df['column'].str.endswith('특정문자열')]
+
+
+# filtered_df = df[(df['column'] >= 30) & (df['column'] <= 50)]
+
+
+# 특정행 삭제
+# filtered_df = df.drop(index=[1, 3, 5])
+
+# 열이름으로 필터
+# filtered_df = df.filter(like='키워드', axis=1)
+
+# 널값있는 행삭제
+# filtered_df = df.dropna()
+# 널값있는 열삭제
+# filtered_df = df.dropna(axis=1)
+
+# 중간값이상 선택
+# median_value = df['column'].median()
+# filtered_df = df[df['column'] > median_value]
+
+# 최소값이상 선택
+# min_value = df['column'].min()
+# filtered_df = df[df['column'] >= min_value]
+
+
+# 백분위 이상 선택
+# percentile_value = df['column'].quantile(0.75)  # 상위 25%를 나타냄
+# filtered_df = df[df['column'] > percentile_value]
+
+# 대소문자 구분없이 필터링
+# filtered_df = df[df['column'].str.lower() == 'value']
+
+
+# 인덱스와 특정열의 값으로 필터링
+# filtered_df = df[df.index.isin([1, 3, 5]) & (df['column'] == 'value')]
+
+
+# 열의 유형에 따라 필터링
+# filtered_df = df.select_dtypes(include=['int64'])
+
+# 데이터프레임에서 열의 이름으로 시작하는 열 선택:
+# filtered_df = df.filter(like='prefix_', axis=1)
+
+# 데이터프레임에서 열의 이름으로 정확한 열 선택:
+# filtered_df = df.filter(items=['column1', 'column2'])
+
+
+# 데이터프레임에서 다수의 열 조건을 AND 및 OR 조합하여 필터링:
+# filtered_df = df[((df['column1'] > 50) & (df['column2'] == 'value')) | (df['column3'] < 30)]
+
+# 데이터프레임에서 특정 열의 값과 다른 열의 조건을 조합하여 필터링:
+# filtered_df = df[(df['column1'] == 'value1') & ((df['column2'] > 50) | (df['column3'] < 20))]
+# filtered_df = df[df['columnA'].str.contains('pattern') & (df['columnB'] > 30)]
+# filtered_df = df[df['columnA'].str.contains('pattern') | (df['columnB'] > 30)]
+
+# 데이터프레임에서 열의 조건에 따라 그룹화 및 집계 후 필터링:
+# grouped_df = df.groupby('group_column')['value_column'].mean()
+# filtered_df = grouped_df[grouped_df > 50]
+
+# filter_list = ['value1', 'value2', 'value3']
+# filtered_df = df[~df['column'].isin(filter_list)]
+
+# 데이터프레임에서 여러 열을 조합하여 새로운 열 생성 후 필터링:
+# df['combined_column'] = df['column1'] + df['column2']
+# filtered_df = df[df['combined_column'] > 100]
+
+
+# 데이터프레임에서 복잡한 계산 또는 함수를 적용하여 필터링:
+# def custom_filter(row):
+#     return row['column1'] * 2 + row['column2'] / 3 > 50
+# filtered_df = df[df.apply(custom_filter, axis=1)]
+
+
+
+
+
+
+
+
+
+
+
+#######################################################
+#######################################################
+#################    새로운 column을 만듦###############
+#######################################################
+#######################################################
+# df['new_column'] = [1, 2, 3, 4, 5]
+# df['new_column'] = df['existing_column'] * 2
+# df['new_column'] = df['column1'] + df['column2']
+# df['full_name'] = df['first_name'] + ' ' + df['last_name']
+# df['next_week'] = df['date_column'] + pd.DateOffset(weeks=1)
+# df1['new_column'] = df2['columnA'] + df2['columnB']
+# df['year'] = df['date_column'].dt.year
+# df['month'] = df['date_column'].dt.month
+
+
+
+# 조건에 따라 새로운 열 생성:
+# df['new_column'] = np.where(df['existing_column'] > 50, 'Yes', 'No')
+
+# apply() 함수를 사용하여 함수를 적용하여 새로운 열 생성:
+# def custom_function(row):
+#     return row['column1'] * 2 + row['column2']
+
+# df['new_column'] = df.apply(custom_function, axis=1)
+
+
+# 조건부 열 생성: 세 개의 열 중에서 조건에 따라 값을 선택하여 새로운 열 생성하기.
+# df['new_column'] = np.where((df['column1'] > 50) & (df['column2'] < 30), 'A', 'B')
+
+
+# 그룹별 집계 후 열 생성: 그룹화한 후 각 그룹의 평균 값을 새로운 열로 추가하기.
+# df['group_mean'] = df.groupby('group_column')['value_column'].transform('mean')
+
+
+
+# 데이터프레임 병합 후 열 생성: 두 개의 데이터프레임을 조인한 뒤 새로운 열 생성하기.
+# merged_df = df1.merge(df2, on='common_column')
+# merged_df['new_column'] = merged_df['columnA'] + merged_df['columnB']
+
+# 문자열 분리 후 열 생성: 하나의 열에 저장된 이름을 성과 이름으로 분리하여 새 열 생성하기.
+# df[['last_name', 'first_name']] = df['full_name'].str.split(', ', expand=True)
+
+
+# 창 함수(rolling function)를 사용한 이동평균 계산 후 열 생성: 이동평균을 계산하여 새 열 생성하기.
+# df['moving_average'] = df['value_column'].rolling(window=3).mean()
+
+# 시퀀스 데이터를 이용한 열 생성: 리스트 열을 사용하여 새로운 열 생성하기.
+# df['max_value'] = df['sequence_column'].apply(lambda x: max(x))
+
+
+# 다차원 배열 연산을 사용한 열 생성: 다차원 배열 연산을 활용하여 새로운 열 생성하기.
+# df['new_column'] = df.apply(lambda row: np.dot(row['vector_column'], row['matrix_column']), axis=1)
+
+
+
+
+
+
+
