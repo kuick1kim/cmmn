@@ -471,3 +471,181 @@ def kill_pid(ProcessName1):##### 여기서는 크롬드라이버가 있으면 �
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):   #예외처리
             pass
 
+
+
+
+
+
+
+
+
+
+
+
+
+# GET 요청 보내기: 
+# response = requests.get("https://www.example.com")
+# print(response.text)
+
+# GET 요청에 쿼리 매개변수 추가: 
+# params = {"key1": "value1", "key2": "value2"}
+# response = requests.get("https://www.example.com", params=params)
+# print(response.text)
+
+# HTTP 헤더 추가하기: 
+# headers = {"User-Agent": "My App 1.0"}
+# response = requests.get("https://www.example.com", headers=headers)
+# print(response.text)
+
+
+
+
+# POST 요청 보내기: 
+# data = {"key1": "value1", "key2": "value2"}
+# response = requests.post("https://www.example.com", data=data)
+# print(response.text)
+
+
+# JSON 데이터 보내기: 
+# import json
+# data = {"key1": "value1", "key2": "value2"}
+# headers = {"Content-Type": "application/json"}
+# response = requests.post("https://www.example.com", data=json.dumps(data), headers=headers)
+# print(response.text)
+
+# 상태 코드 확인하기: 
+# response = requests.get("https://www.example.com")
+# if response.status_code == 200:
+#     print("Success!")
+# else:
+#     print("Failed with status code:", response.status_code)
+
+
+# 응답 헤더 확인하기: 
+# response = requests.get("https://www.example.com")
+# print(response.headers)
+
+
+# 예외 처리 추가하기: 
+# try:
+#     response = requests.get("https://www.example.com")
+#     response.raise_for_status()  # HTTP 오류 발생 시 예외 발생
+#     print(response.text)
+# except requests.exceptions.RequestException as e:
+#     print("Request Error:", e)
+
+
+
+# 세션 유지하기: 
+# session = requests.Session()
+# response = session.get("https://www.example.com")
+# # 이제 같은 세션으로 여러 요청을 보낼 수 있음
+
+# 인증 정보 전달하기: 
+# from requests.auth import HTTPBasicAuth
+# auth = HTTPBasicAuth("username", "password")
+# response = requests.get("https://www.example.com", auth=auth)
+# print(response.text)
+
+
+
+
+# 파일 다운로드: 
+# url = "https://www.example.com/somefile.zip"
+# response = requests.get(url)
+# with open("downloaded_file.zip", "wb") as file:
+#     file.write(response.content)
+
+# 세션 쿠키 관리: 
+# session = requests.Session()
+# session.get("https://www.example.com/login")
+# # 세션을 통해 로그인 및 쿠키를 관리할 수 있음
+
+# 리다이렉트 제어: 
+# response = requests.get("https://www.example.com", allow_redirects=False)
+# if response.status_code == 302:
+#     print("Redirected to:", response.headers['Location'])
+
+# 인코딩 처리: 
+# response = requests.get("https://www.example.com")
+# response.encoding = "utf-8"  # 수동으로 인코딩 설정
+# print(response.text)
+
+# 타임아웃 설정: 
+# try:
+#     response = requests.get("https://www.example.com", timeout=5)  # 최대 5초 대기
+#     print(response.text)
+# except requests.exceptions.Timeout:
+#     print("Request Timed Out")
+
+# 사용자 정의 예외 처리: 
+# class CustomException(Exception):
+#     pass
+# try:
+#     response = requests.get("https://www.example.com")
+#     if response.status_code != 200:
+#         raise CustomException("Request failed with status code:", response.status_code)
+# except CustomException as e:
+#     print(e)
+
+# 사용자 정의 헤더와 쿠키 설정: 
+# headers = {"User-Agent": "My App 1.0"}
+# cookies = {"session_id": "abcdef123456"}
+# response = requests.get("https://www.example.com", headers=headers, cookies=cookies)
+
+# JSON 응답 처리: 
+# response = requests.get("https://api.example.com/data.json")
+# data = response.json()  # JSON 응답을 파이썬 딕셔너리로 파싱
+
+# 세션 프록시 설정: 
+# proxies = {
+#     "http": "http://proxy.example.com:8080",
+#     "https": "https://proxy.example.com:8080"
+# }
+# response = requests.get("https://www.example.com", proxies=proxies)
+
+# 멀티파트 파일 업로드: 
+# files = {'file': open('file.txt', 'rb')}
+# response = requests.post("https://www.example.com/upload", files=files)
+
+
+
+# response.text: HTTP 응답의 본문 텍스트를 반환합니다.
+
+# response.status_code: HTTP 응답의 상태 코드를 반환합니다. 예를 들어, 200은 "성공"을 나타냅니다.
+
+# response.headers: HTTP 응답의 헤더 정보를 포함하는 딕셔너리를 반환합니다.
+
+# response.json(): HTTP 응답의 JSON 데이터를 파싱하여 파이썬 객체로 반환합니다. 이 메서드는 JSON 응답을 다룰 때 유용합니다.
+
+# response.content: HTTP 응답의 바이너리 데이터를 반환합니다. 주로 이미지, 파일 다운로드 등의 작업에서 사용됩니다.
+
+# response.url: HTTP 요청 후 최종적으로 연결된 URL을 반환합니다. 리다이렉션 발생 시 유용합니다.
+
+# response.raise_for_status(): HTTP 응답의 상태 코드를 확인하고, 상태 코드가 에러(4xx 또는 5xx)일 경우 예외를 발생시킵니다.
+
+# response.cookies: HTTP 응답에서 받은 쿠키 정보를 포함하는 RequestsCookieJar 객체를 반환합니다. 쿠키를 읽거나 설정하는 데 사용됩니다.
+
+# response.headers.get('Header-Name'): 특정 헤더의 값을 가져올 때 사용합니다. 'Header-Name'에 헤더 이름을 지정하면 해당 헤더의 값을 반환합니다.
+
+# response.request: 현재 응답과 관련된 원래 요청 객체에 접근할 때 사용합니다. 원본 요청에 대한 정보를 확인하거나 수정할 수 있습니다.
+
+# response.encoding: HTTP 응답의 텍스트 인코딩을 나타내는 문자열을 반환합니다. 보통 이 값을 자동으로 설정하지만, 필요한 경우 수동으로 설정할 수 있습니다.
+
+# response.iter_content(chunk_size): HTTP 응답의 내용을 일정 크기(chunk_size)로 나누어 제너레이터로 반환합니다. 대용량 파일 다운로드 시 유용합니다.
+
+# response.iter_lines(chunk_size): HTTP 응답의 내용을 줄 단위로 나누어 제너레이터로 반환합니다. 텍스트 데이터를 줄 단위로 처리할 때 유용합니다.
+
+# response.elapsed: 요청이 보내진 후 서버 응답까지 걸린 시간을 나타내는 timedelta 객체를 반환합니다.
+
+# response.history: 리다이렉션을 따라 이동한 모든 중간 응답을 나타내는 리스트를 반환합니다. 이전 응답을 확인할 때 유용합니다.
+
+# response.is_redirect: 응답이 리다이렉트인지 여부를 확인하는 불리언 값을 반환합니다.
+
+# response.ok: 응답이 성공(상태 코드 200-299)인 경우 True를, 그렇지 않으면 False를 반환합니다.
+
+# response.links: HTTP 응답의 Link 헤더를 파싱하여 링크 정보를 담은 딕셔너리를 반환합니다. 관련 링크를 쉽게 추출할 수 있습니다.
+
+# response.close(): HTTP 응답과 관련된 리소스를 닫습니다. 일부 경우에는 자동으로 호출되지만, 명시적으로 호출할 수도 있습니다.
+
+# response.raise_for_redirect(): 응답이 리다이렉트(3xx) 상태 코드인 경우 예외를 발생시킵니다. 이를 사용하여 리다이렉션을 처리할 수 있습니다.
