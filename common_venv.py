@@ -24,6 +24,7 @@ import shutil
 # 3. pip install PyQt5
 # 3. pip install pyqt5-tools
 # 3. pip install pandas
+# 3. pip install matplotlib
 
 # 3. pip install BeautifulSoup4
 # 3. pip install openpyxl
