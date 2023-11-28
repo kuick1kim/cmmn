@@ -10,10 +10,18 @@ import shutil
 
 #1. pip install pyinstaller 로 venv에서 설치합니다
 #2. pyinstaller -w -F --icon=app.ico main.py 로 콘솔창도 안뜨고, 한파일로 만듭니다. 
+
+#################################################################
+##########아이콘 미리 만들어 두세요 라이브러리 설치 동안에 ##########
+#################################################################
 # 백그라운드제거 https://www.remove.bg/ko/upload
 # png를 아이콘으로 https://convertico.com/#google_vignette    
 #3. pyinstaller.exe --onefile --windowed --icon=app.ico .\bible.py 
 
+
+##########################################################
+##########환경설정 해주세요 라이브러리 설치 동안에 ##########
+##########################################################
 # QT_PLUGIN_PATH
 # G:\python\20230811 pyqt2pandas\kimkim\Lib\site-packages\PyQt5\Qt5\plugins
 
