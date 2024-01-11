@@ -24,6 +24,26 @@
 
 ###############################################################
 ###############################################################
+#############  모델이후에 admin.py에서 세팅을 해줘야한다. ###########
+
+
+##### 관리자 페이지 만들기
+
+#  py manage.py createsuperuser
+# admin / admin@example.com / admin/ admin / y
+# 실행하기 
+# py .\manage.py runserver
+
+# http://127.0.0.1:8000/admin/
+
+# from django.contrib import admin
+# from bbb_blog.models import Category, Post
+
+
+# admin.site.register(Category)
+# admin.site.register(Post)
+###############################################################
+###############################################################
 
 # from django.db import models
 # from django.contrib.auth.models import User

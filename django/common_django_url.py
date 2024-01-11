@@ -3,6 +3,30 @@
 ###############################################################
 ###############################################################
 
+# 이미지를 연결하려면
+# index.html 파일은 templates 폴더 안에 있어야 한다
+
+# 이미지와 css js는 
+# static 폴더를 만들어 줘야한다 - 외부에 만들어줘야함
+# 그리고 스테틱 폴더를 
+# setting.py 에서 세팅해야 하고
+# url.py 에서 세팅해야한다
+
+# 내앱/
+# ├── static/
+# │   └── images/
+# │       └── myimage.jpg
+# │   └── css/
+# │   └── js/
+# └── templates/
+#     └── index.html
+
+
+
+
+
+
+
 # from django.urls import path
 # from . import views
 

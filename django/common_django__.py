@@ -7,8 +7,8 @@
 
 # 2. 버추얼 환경이므로 라이브러리를 깔아야함
 # pip install Django
-
-
+# pip install Pillow
+# pip install django-widget-tweaks #### 입력폼 예쁘게 만들기 위해
 # 3 프로젝트 만들기 
 ####  django-admin startproject [mysite]
 
@@ -23,6 +23,30 @@
 
 # 6 앱을 하나 만들때
 #### python manage.py startapp {myapp}
+# 앱이 만들어지면
+
+# 6-1-1 static 폴더 만들기
+# 6-1-2 static setting.py 초기에 변경해 주기
+
+# 6-2-1 app 내에 template 폴더 손으로 만들어주기
+# 6-2-2 html 변경할 예정이므로 common_html.py 복사해서 html {% load static %} 변경해주기
+
+# 6-3-1 app 내에 url 파일이 없다 만들어주기 
+# 6-3-2 common_url.py 주석으로 전부 때려박기
+
+# 6-4 app 내에 view에 common view 주석으로 때려박고 시작
+
+# 6-5 app 내에 model 에 common model 주석으로 때려박고 시작
+
+#### python manage.py startapp {myapp}
+
+
+
+
+
+
+
+
 
 
 
@@ -77,6 +101,12 @@
 # py manage.py migrate
 
 
+##### 관리자 페이지 만들기
+
+#  py manage.py createsuperuser
+
+# admin / admin@example.com / admin/ admin / y
+
 # 6666
 # API 가지고 놀기¶
 #  py manage.py shell
@@ -86,12 +116,6 @@
 
 
 
-
-##### 관리자 페이지 만들기
-
-#  py manage.py createsuperuser
-
-# admin / admin@example.com / admin/ admin / y
 
 ##### 페이지 열기 
 
@@ -140,6 +164,58 @@
 # 참조사이트
 # https://chocohaim1121.tistory.com/78
 # https://free-eunb.tistory.com/42
+
+
+
+
+
+
+
+
+# https://www.pythonanywhere.com/user/kuick2/consoles/31832607/
+# bash 에 들어가서
+# 1. 깃에서 클론함
+#  git clone https://github.com/kuick1kim/bbbb.git
+
+# 2. cd bbbb
+# 2. virtualenv venv --python=python3.9.6
+# 2. 버츄얼 환경으로 변경하고 라이브라리 설치
+# 2. source venv/bin/activate
+
+# 3. 라이브러리 설치
+# pip install Django
+# pip install Pillow
+# pip install django-widget-tweaks #### 입력폼 예쁘게 만들기 위해
+
+# 4. python manage.py migrate 다시설치하기 
+
+# 5. python manage.py createsuperuser
+# 5. kuick1 | 이메일 | 비번 | 비번확인
+
+# 6. web 으로 이동해서
+# 6. Python version: 3.9 변경하기
+# 6. /home/kuick2/bbbb/venv
+
+# 6. /static/	/home/kuick2/bbbb/static
+# 6. WSGI configuration file:/var/www/kuick2_pythonanywhere_com_wsgi.py
+#####################################################################
+#####################################################################
+# import os
+# import sys
+# path = '/home/kuick2/{{{변경할 부분 bbbb}}}'
+# if path not in sys.path:
+#     sys.path.append(path)
+# os.environ['DJANGO_SETTINGS_MODULE'] = '{{{변경할 부분 bbbb}}}.settings'
+# from django.core.wsgi import get_wsgi_application
+# application = get_wsgi_application()
+#####################################################################
+#####################################################################
+
+# 6. setting.py 
+# ALLOWED_HOSTS = ['kuick2.pythonanywhere.com'] 변경
+# WSGI_APPLICATION = '{{{확인하기 bbbb}}}.wsgi.application'
+
+
 
 
 

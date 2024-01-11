@@ -16,16 +16,31 @@ def pip_install():
 ##################################################
 ##################################################
 def first_init(git_url):
-    ### 사용법 common_git.first_init('https://github.com/kuick1kim/cmmn.git')
+    ### 사용법 common_git.first_init('https://github.com/kuick1kim/blog1.git')
     os.system('git remote rm origin') ### 기본주소 비우기
     os.system('echo "# cmmn" >> README1.md')
     os.system('git init')
     os.system('git add README1.md')
+    os.system('git add .')
     os.system('git commit -m "first commit"')
     os.system('git branch -M main')
+    # git remote add origin https://github.com/kuick1kim/blog1.git
+    # git remote add origin https://github.com/kuick1kim/blog1.git
     os.system(f'git remote add origin {git_url}')
     os.system('git push -u origin main') 
  
+
+
+# echo "# blog1" >> README.md
+# git init
+# git add README.md
+# git commit -m "first commit"
+# git branch -M main
+# git remote add origin https://github.com/kuick1kim/blog1.git
+# git push -u origin main
+
+
+
 # 초기화 하는 방법
 ### 이것으로 자름
 # git remote rm origin
@@ -113,6 +128,8 @@ def make_gitignore():
     print("모든 파일이 .gitignore 파일에 추가되었습니다.")
 
 
+print()
+
  
 ### 이것이 안됨
 # git init
@@ -130,7 +147,7 @@ def make_gitignore():
 # print("문자열 변환 : ", time.strftime('%Y-%m-%d %H:%M:%S'))
 
 
-# 오리진이 문제가 있을때 지우기
+# 문제1 오리진이 문제가 있을때 지우기
 # error: remote origin already exists.  
 # os.system('git remote remove origin')
 
@@ -146,7 +163,13 @@ def make_gitignore():
 # 문제4
 # rebase 도중에 문제가 발생 
 #  git rebase --quit
+    
+# 문제 5
+# To add an exception for this directory, call:
+# git config --global --add safe.directory 'G:/python/20231201 django study first/bbbb'
+#### 해결-------git config --global --add safe.directory '*'
+#### 전체가 문제 없다고 해줌
 
-
-
-
+## 문제 6 ----CRLF 줄바꿈 문제는 괜찮다고 함
+# git config --global core.autocrlf true
+# warning: in the working copy of 'static/js/jquery.min.js', LF will be replaced by CRLF the next time Git touches it
