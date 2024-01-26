@@ -4,9 +4,9 @@
         "나이": 48,
         "이메일": "hong@example.com",
         "전화": "01025713169",
-        "bun1": ' bfid',
-        "bun2": ' pspr',
-        "bun3": ' umvc',
+        "bun1": 'bfid',
+        "bun2": 'pspr',
+        "bun3": 'umvc',
         "bun4": 'wwpf',
         "주소": {
             "도시": "서울",
